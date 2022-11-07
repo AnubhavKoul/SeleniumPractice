@@ -3,13 +3,13 @@ package Screenshot_Demo;
 import java.io.File;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class Screenshot_Method2 {
+public class ScreenshotOfSpecificElement {
 
 	public static void main(String[] args) throws Exception {
 		System.setProperty("webdriver.chrome.driver", "C:\\Git_Repo\\Dependent_jars\\chromedriver.exe");
@@ -23,15 +23,14 @@ public class Screenshot_Method2 {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		Thread.sleep(5000);
 		
-		// no need to cast the drive when instead of webdriver you are creating the object for chrome driver.
-		//screenshot capture and saving using file handler, 
+		WebElement nameTag = driver.findElement(By.xpath("//a[text()='Anubhav Koul']"));
 		
-		File src = driver.getScreenshotAs(OutputType.FILE);
-		
+		File src = nameTag.getScreenshotAs(OutputType.FILE);
 		//FileHandler is a static class. Providing ./foldername - adds the screenshot in the same project where folder is present.
+		FileHandler.copy(src, new File("./Screenshots/ElementCapture.png"));
 		
-		FileHandler.copy(src, new File("./Screenshots/SecondCapture.png"));
 		driver.close();
+
 	}
 
 }

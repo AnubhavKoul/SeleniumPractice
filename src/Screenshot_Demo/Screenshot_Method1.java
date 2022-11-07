@@ -28,7 +28,7 @@ public class Screenshot_Method1 {
 		
 		//TakesScreenshot - Interface.Code to take screenshot and in next line to copy that screenshot as a file at the destination.
 		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(src, new File("C:\\Git_Repo\\Dependent_jars\\screenShotCaptures\\FirstBasicCapture.png"));
+		FileUtils.copyFile(src, new File("./Screenshots/FirstBasicCapture.png"));
 
 		driver.close();
 	}
